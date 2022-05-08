@@ -1,19 +1,18 @@
 terraform {
   required_providers {
     google = {
-      source  = "hashicorp/google"
+      source = "hashicorp/google"
       version = "3.73.0"
     }
   }
-
-  required_version = ">= 0.15.0"
 }
 
 provider "google" {
-  credentials = file("terraformtutorial-349615-776d86451a5c.json")
-  project     = "terraformtutorial-349615"
-  region      = "us-central1"
-  zone        = "us-central1-c"
+  credentials = file(var.credentials_file)
+
+  project = var.project
+  region  = var.region
+  zone    = var.zone
 }
 
 resource "google_compute_network" "vpc_network" {
